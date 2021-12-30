@@ -1,0 +1,30 @@
+<button (click)="loggedOut()" class="btn btn-primary" routerLink="login">
+  Logout
+</button>
+
+<div class="dropdown">
+  <label for="city">Select a city</label>
+  <select #select (change)="onChange()" name="city">
+    <option value="Delhi">Delhi</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Mumbai">Mumbai</option>
+    <option value="Chennai">Chennai</option>
+  </select>
+
+  <div>
+    <button (click)="buttonClick()" class="btn btn-secondary">
+      Press me to get the list
+    </button>
+  </div>
+</div>
+
+<table>
+  <th *ngFor="let column of headers">
+    {{ column }}
+  </th>
+  <tr *ngFor="let post of posts">
+    <td *ngFor="let column of datahdr">
+      {{ post[column] }}
+    </td>
+  </tr>
+</table>
