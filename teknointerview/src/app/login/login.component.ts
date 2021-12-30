@@ -5,6 +5,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -27,21 +28,26 @@ export class LoginComponent {
 
   userLoggedIn: String;
   alert: boolean = false;
-  constructor() {
+  constructor(private router: Router) {
     if (localStorage.getItem('username') != null) {
       this.userLoggedIn = localStorage.getItem('username');
       // localStorage.removeItem('username');
-    } else {
-      this.userLoggedIn = null;
     }
+    // else {
+    //   this.userLoggedIn = null;
+    // }
     console.log('Hello Mush :' + this.userLoggedIn);
   }
 
   onSubmit() {
     console.log(this.loginForm);
-    if (this.loginForm.get('email').value === 'admin@test.com') {
+    if (
+      this.loginForm.get('email').value === 'admin@test.com' &&
+      this.loginForm.get('password').value === 'Admin123!'
+    ) {
       localStorage.setItem('username', this.loginForm.get('email').value);
       this.userLoggedIn = this.loginForm.get('email').value;
+      this.router.navigate(['Custtable']);
     } else {
       this.alert = true;
     }

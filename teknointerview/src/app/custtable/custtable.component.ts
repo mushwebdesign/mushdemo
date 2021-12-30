@@ -12,6 +12,9 @@ export class CusttableComponent implements OnInit {
   custRepo: CustomerRepository;
   customers: Customer[];
   stringJson: any;
+  showTable: boolean = false;
+
+  userName: String = 'abc';
   posts;
   headers = [
     'Customer Name',
@@ -32,9 +35,10 @@ export class CusttableComponent implements OnInit {
   ];
   // userLogged: String;
   constructor(private router: Router) {
+    this.userName = localStorage.getItem('username');
+    console.log('user is kk:' + localStorage.getItem('username'));
     // this.userLogged = localStorage.getItem('username');
   }
-
   ngOnInit(): void {}
 
   myFunction() {
@@ -49,7 +53,11 @@ export class CusttableComponent implements OnInit {
     this.stringJson = this.custRepo.getJSONCustomers('dummy');
     console.log(JSON.parse(this.stringJson));
     console.log('MushEnd');
-    this.posts = JSON.parse(this.stringJson);
+    if (this.stringJson != null) {
+      this.posts = JSON.parse(this.stringJson);
+      this.showTable = true;
+    }
+
     console.log(this.posts);
     //  JSON.parse(this.stringJson.forEach(element => {
     //   console.log(element.custname)  }));

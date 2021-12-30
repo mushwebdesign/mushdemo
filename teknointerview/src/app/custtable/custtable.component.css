@@ -1,8 +1,21 @@
 .btn-primary {
-    margin: 30px;
-    margin-left: 80%;
-  }
-  .btn-secondary {
-    margin-top: 30px;
-  }
-  
+  margin: 0px;
+  margin-left: 80%;
+}
+.btn-secondary {
+  margin-top: 30px;
+}
+
+p {
+  margin-left: 80%;
+  margin-top: 20px;
+  font-size: 12px;
+}
+table {
+  background: rgb(202, 193, 193);
+  margin: 50px;
+}
+table th {
+  padding: 10px;
+  border: 1px solid black;
+}

@@ -1,58 +1,72 @@
-<!-- <div *ngIf="userLoggedIn == null"> -->
-<!-- alert box -->
-<div
-  *ngIf="alert"
-  class="alert alert-danger alert-dismissible fade show"
-  role="alert"
->
-  <strong>Invalid Email Adress.</strong> Please enter registred email id.
-
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<!-- alert box -->
 <div class="container">
   <div class="row">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <!-- 1 form group -->
-      <div class="form-group">
-        <label>Email</label>
-        <input class="form-control" formControlName="email" />
-        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
-          <ul>
-            <li *ngIf="email.errors.required">email is required</li>
-            <li *ngIf="email.errors.minlength">min 4 characters</li>
-            <li *ngIf="email.errors.email">Enter a valid email</li>
-          </ul>
-        </div>
-      </div>
-      <!-- 2 form group -->
-      <div class="form-group">
-        <label>Password</label>
-        <input class="form-control" formControlName="password" />
-        <div
-          class="alert alert-danger"
-          *ngIf="password.touched && password.invalid"
-        >
-          <ul>
-            <li *ngIf="password.errors.required">password is required</li>
-            <li *ngIf="password.errors.minlength">min 3 characters</li>
-          </ul>
-        </div>
-      </div>
-      <!-- submit button -->
+    <!-- alert box -->
+    <div
+      *ngIf="alert"
+      class="alert alert-danger alert-dismissible fade show"
+      role="alert"
+    >
+      <strong>Invalid Credential.</strong>
+
       <button
-        type="submit"
-        routerLink="/Custtable"
-        [disabled]="!loginForm.valid"
-        click="onSubmit()"
-        class="btn btn-primary"
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
       >
-        Submit
+        <span aria-hidden="true">&times;</span>
       </button>
-    </form>
+    </div>
+    <!-- alert box -->
+    <div class="container">
+      <div class="row">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- 1 form group -->
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" formControlName="email" />
+            <div
+              class="alert alert-danger"
+              *ngIf="email.touched && email.invalid"
+            >
+              <ul>
+                <li *ngIf="email.errors.required">email is required</li>
+                <li *ngIf="email.errors.minlength">min 4 characters</li>
+                <li *ngIf="email.errors.email">Enter a valid email</li>
+              </ul>
+            </div>
+          </div>
+          <!-- 2 form group -->
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              class="form-control"
+              formControlName="password"
+              type="password"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="password.touched && password.invalid"
+            >
+              <ul>
+                <li *ngIf="password.errors.required">password is required</li>
+                <li *ngIf="password.errors.minlength">min 3 characters</li>
+              </ul>
+            </div>
+          </div>
+          <!-- submit button -->
+          <button
+            type="submit"
+            [disabled]="!loginForm.valid"
+            click="onSubmit()"
+            class="btn btn-primary"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
 <!-- <app-custtable *ngIf="userLoggedIn != null"></app-custtable> -->
+<!-- routerLink="/Custtable" -->
