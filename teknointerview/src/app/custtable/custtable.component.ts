@@ -38,6 +38,9 @@ export class CusttableComponent implements OnInit {
     this.userName = localStorage.getItem('username');
     console.log('user is kk:' + localStorage.getItem('username'));
     // this.userLogged = localStorage.getItem('username');
+    if(this.userName == null){
+      this.router.navigate(['/']);
+    }
   }
   ngOnInit(): void {}
 
@@ -46,7 +49,11 @@ export class CusttableComponent implements OnInit {
     document.getElementById('myDropdown').classList.toggle('show');
     console.log(id);
   }
-  buttonClick(): void {
+  
+  buttonClick(cust:String): void {
+    if(cust != 'Cust1') {
+      this.showTable = false;
+    } else {
     console.log('Hello');
 
     this.custRepo = new CustomerRepository();
@@ -59,6 +66,7 @@ export class CusttableComponent implements OnInit {
     }
 
     console.log(this.posts);
+    }
     //  JSON.parse(this.stringJson.forEach(element => {
     //   console.log(element.custname)  }));
   }
